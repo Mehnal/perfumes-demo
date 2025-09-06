@@ -1,0 +1,69 @@
+[
+  {
+    "id": "rose-noir",
+    "name": "Rose Noir",
+    "price": 59.0,
+    "size": "50 ml",
+    "family": "Floral",
+    "notes": [
+      "rose",
+      "raspberry",
+      "patchouli"
+    ],
+    "image": "assets/bottle1.svg",
+    "badge": "Bestseller"
+  },
+  {
+    "id": "citrus-muse",
+    "name": "Citrus Muse",
+    "price": 39.0,
+    "size": "50 ml",
+    "family": "Citrus",
+    "notes": [
+      "lemon",
+      "bergamot",
+      "neroli"
+    ],
+    "image": "assets/bottle2.svg",
+    "badge": "New"
+  },
+  {
+    "id": "woodland-amber",
+    "name": "Woodland Amber",
+    "price": 69.0,
+    "size": "100 ml",
+    "family": "Woody",
+    "notes": [
+      "cedar",
+      "amber",
+      "vanilla"
+    ],
+    "image": "assets/bottle3.svg"
+  },
+  {
+    "id": "ocean-mist",
+    "name": "Ocean Mist",
+    "price": 49.0,
+    "size": "50 ml",
+    "family": "Fresh",
+    "notes": [
+      "sea salt",
+      "mint",
+      "musk"
+    ],
+    "image": "assets/bottle4.svg"
+  },
+  {
+    "id": "spice-trail",
+    "name": "Spice Trail",
+    "price": 79.0,
+    "size": "100 ml",
+    "family": "Oriental",
+    "notes": [
+      "saffron",
+      "cardamom",
+      "oud"
+    ],
+    "image": "assets/bottle5.svg"
+  }
+]

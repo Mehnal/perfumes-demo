@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Perfumes Demo</title>
+  <meta name="description" content="A simple demo website for showcasing perfumes.">
+  <link rel="icon" href="assets/bottle1.svg">
+  <style>
+    /* Basic reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; color: #161616; background: #fafafa; }
+
+    /* Header */
+    header { position: sticky; top: 0; backdrop-filter: blur(8px); background: rgba(255,255,255,0.8); border-bottom: 1px solid #eee; z-index: 10; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .3px; }
+    .brand img { width: 28px; height: 28px; }
+    .nav a { text-decoration: none; color: #161616; margin-left: 16px; font-weight: 600; }
+    .nav a:hover { text-decoration: underline; }
+
+    /* Hero */
+    .hero { background: linear-gradient(180deg, #fff 0%, #f6f2ff 100%); border-bottom: 1px solid #eee; }
+    .hero .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; padding: 48px 0; }
+    .hero h1 { font-size: clamp(28px, 3.5vw, 44px); margin: 0 0 12px; }
+    .hero p { margin: 0 0 18px; line-height: 1.6; }
+    .hero .cta { display: flex; gap: 12px; }
+    .btn { display: inline-block; padding: 12px 16px; border-radius: 10px; border: 1px solid #222; background: #222; color: #fff; cursor: pointer; font-weight: 700; }
+    .btn.secondary { background: transparent; color: #222; }
+    .btn:focus-visible { outline: 3px solid #9cc3ff; outline-offset: 2px; }
+
+    /* Filters */
+    .filters { display: flex; align-items: center; gap: 12px; padding: 18px 0; }
+    select, input[type="search"] { padding: 10px 12px; border: 1px solid #ddd; border-radius: 10px; }
+
+    /* Grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; padding: 10px 0 40px; }
+    .card { background: #fff; border: 1px solid #eee; border-radius: 14px; overflow: hidden; transition: transform .15s ease, box-shadow .15s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(0,0,0,0.06); }
+    .card img { width: 100%; height: 200px; object-fit: cover; background: #f8f8f8; }
+    .card .pad { padding: 12px; }
+    .price { font-weight: 800; }
+    .badge { display: inline-block; padding: 4px 8px; border-radius: 999px; border: 1px solid #ddd; font-size: 12px; margin-left: 8px; }
+
+    /* Footer */
+    footer { background: #111; color: #eee; }
+    footer .wrap { display: grid; gap: 16px; padding: 28px 0; }
+    footer a { color: #fff; }
+
+    /* Contact */
+    form { display: grid; gap: 12px; max-width: 520px; }
+    input, textarea { padding: 10px 12px; border: 1px solid #ddd; border-radius: 10px; }
+    textarea { min-height: 120px; }
+
+    @media (max-width: 860px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Main">
+      <div class="brand">
+        <img src="assets/bottle1.svg" alt="Brand icon">
+        <span>Perfumes Demo</span>
+      </div>
+      <nav>
+        <a href="#catalog">Catalog</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container wrap">
+        <div>
+          <h1>Fragrances for every mood</h1>
+          <p>Showcase your perfumes with a clean layout. Replace text and images with your own and publish it for free.</p>
+          <div class="cta">
+            <a class="btn" href="#catalog">Browse catalog</a>
+            <a class="btn secondary" href="#contact">Ask a question</a>
+          </div>
+        </div>
+        <div aria-hidden="true">
+          <img src="assets/bottle3.svg" alt="" style="width:100%; max-width:420px; display:block; margin: 0 auto;">
+        </div>
+      </div>
+    </section>
+
+    <section id="catalog" class="container">
+      <div class="filters" aria-label="Filters">
+        <label>
+          Family
+          <select id="familyFilter" aria-label="Fragrance family filter">
+            <option value="">All</option>
+          </select>
+        </label>
+        <input id="searchBox" type="search" placeholder="Search by name or note" aria-label="Search perfumes">
+      </div>
+      <div id="grid" class="grid" aria-live="polite"></div>
+    </section>
+
+    <section id="about" class="container" style="padding: 16px 0 40px;">
+      <h2>About the brand</h2>
+      <p>Write a short and clear story about your brand. Explain what makes your perfumes special. Keep it friendly and real.</p>
+    </section>
+
+    <section id="contact" class="container" style="padding: 16px 0 50px;">
+      <h2>Contact</h2>
+      <p>Send a message with the form below. This demo uses your email app to send. For a real inbox, switch to Netlify Forms when you publish on Netlify.</p>
+      <form action="mailto:you@example.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button class="btn" type="submit">Send</button>
+      </form>
+      <p style="font-size: 14px; color: #555;">Tip: change <code>you@example.com</code> in the form action to your email.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container wrap">
+      <div>
+        <strong>Perfumes Demo</strong>
+        <div style="opacity:.8">© <span id="year"></span> Your brand</div>
+      </div>
+      <div>
+        <a href="#about">About</a> · <a href="#contact">Contact</a> · <a href="#catalog">Catalog</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const grid = document.getElementById('grid');
+    const familyFilter = document.getElementById('familyFilter');
+    const searchBox = document.getElementById('searchBox');
+
+    fetch('data/products.json')
+      .then(r => r.json())
+      .then(items => {
+        const families = [...new Set(items.map(i => i.family))].sort();
+        families.forEach(f => {
+          const opt = document.createElement('option');
+          opt.value = f;
+          opt.textContent = f;
+          familyFilter.appendChild(opt);
+        });
+
+        function matches(item) {
+          const ff = familyFilter.value.toLowerCase();
+          const q = searchBox.value.trim().toLowerCase();
+          const inFamily = !ff || item.family.toLowerCase() === ff;
+          const inText = !q || item.name.toLowerCase().includes(q) ||
+                         (item.notes || []).some(n => n.toLowerCase().includes(q));
+          return inFamily && inText;
+        }
+
+        function render() {
+          grid.innerHTML = '';
+          const filtered = items.filter(matches);
+          if (filtered.length === 0) {
+            const p = document.createElement('p');
+            p.textContent = 'No perfumes found. Try a different filter.';
+            grid.appendChild(p);
+            return;
+          }
+          filtered.forEach(p => {
+            const card = document.createElement('article');
+            card.className = 'card';
+            card.innerHTML = `
+              <img src="${p.image}" alt="${p.name} bottle">
+              <div class="pad">
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                  <h3 style="margin:0;">${p.name}</h3>
+                  ${p.badge ? `<span class="badge">${p.badge}</span>` : ''}
+                </div>
+                <div class="price">$${p.price.toFixed(2)} • ${p.size}</div>
+                <div style="opacity:.8; margin: 6px 0;">${p.family}</div>
+                <div style="opacity:.8; font-size: 14px;">Notes: ${(p.notes || []).join(', ')}</div>
+                <div style="margin-top:10px;">
+                  <a class="btn secondary" href="#contact" aria-label="Ask about ${p.name}">Ask about this</a>
+                </div>
+              </div>
+            `;
+            grid.appendChild(card);
+          });
+        }
+
+        familyFilter.addEventListener('change', render);
+        searchBox.addEventListener('input', render);
+        render();
+      });
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
